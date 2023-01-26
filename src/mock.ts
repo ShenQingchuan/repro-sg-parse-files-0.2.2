@@ -2,7 +2,7 @@ import { join } from 'node:path'
 import { mkdir, rm, writeFile } from 'node:fs/promises'
 import { randomUUID } from 'node:crypto';
 import { existsSync } from 'node:fs';
-import { getRandomNum, mockFilesDir } from './shared';
+import { consoleLog, getRandomNum, mockFilesDir } from './shared';
 
 type AvailableExtType = 'js' | 'jsx' | 'ts' | 'tsx'
 
@@ -69,11 +69,11 @@ async function cleanMockFilesDir() {
 async function generateMockFiles() {
   await cleanMockFilesDir();
 
-  for (let i = 0; i < 1e4; ++i) {
+  for (let i = 0; i < 1000; ++i) {
     await createMockFile(i+1);
   }
 
-  console.log('\033[32mMock files generation finished.\033[0m');
+  consoleLog('\033[32mMock files generation finished.\033[0m');
 }
 
 generateMockFiles();

@@ -21,6 +21,11 @@ File: /workspace/repro-sg-parse-files/src/mockFiles/test-file-7300-649fcf13-ce01
 
 /workspace/repro-sg-parse-files/src/mockFiles/test-file-9999-5113bbf8-4df2-4bde-b3de-3f13155ede8a.tsx == Imports ==>
 /workspace/repro-sg-parse-files/src/mockFiles/test-file-9998-eadc0534-fc86-4a20-acd7-e95d60410f31.ts == Imports ==> './dynamic-plain-65/some-file-1', './dynamic-plain-34/some-file-2', './dynamic-plain-43/some-file-3'
+File: /Users/bytedance/repro-sg-parse-files/src/mockFiles/test-file-1000-d473afad-1769-43f4-ba5d-8ef2bcfd100d.js - Run callback
+File: /Users/bytedance/repro-sg-parse-files/src/mockFiles/test-file-10-dfb747d7-4007-42d5-b81b-17dc3a35d2c7.jsx - Run callback
+File: /Users/bytedance/repro-sg-parse-files/src/mockFiles/test-file-1-2dd70aa9-77a6-4411-ba35-0231b9d386aa.ts - Run callback
 ```
+
+After `--- Main Function Over ---` there're still `Run callback` output.
 
 the async function `runAstGrepParse` is not worked as expected, it should end after every callback function synchronously executed.

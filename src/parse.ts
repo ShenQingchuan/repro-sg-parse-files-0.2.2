@@ -1,7 +1,7 @@
 import { parseFiles, SgNode } from "@ast-grep/napi";
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";
-import { getRandomNum, mockFilesDir } from "./shared";
+import { consoleLog, getRandomNum, mockFilesDir } from "./shared";
 
 // 这里是各个搜寻需要的 ast-grep 规则
 export const SG_SINGLE_RULES = {
@@ -75,7 +75,7 @@ async function runAstGrepParse(
         console.error(`File: ${fileName} - Parsing Error ${err}`);
         return;
       }
-      console.log(`File: ${fileName} - Run callback`);
+      consoleLog(`File: ${fileName} - Run callback`);
       const matchedNodes = findAllFromSgRoot(
         result.root(),
         getRandomNum() > 50
@@ -100,10 +100,10 @@ async function main() {
   let records = new Map<string, Set<string>>();
   const allPaths = await readAllFilePaths();
   await runAstGrepParse(allPaths, records);
-  console.log('\n\033[32m --- Main Function Over --- \033[0m\n');
-  console.log(
+  consoleLog('\n\033[32m --- Main Function Over --- \033[0m\n');
+  consoleLog(
     [...records.entries()]
-      .map(([fileName, importsSet]) => `${fileName} == Imports ==> ${[...importsSet].join(', ')}`)
+      .map(([fileName, importsSet], i) => `(${i+1}): ${fileName} == Imports ==> ${[...importsSet].join(', ')}`)
       .join('\n')
   )
 }
