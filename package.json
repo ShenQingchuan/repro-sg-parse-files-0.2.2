@@ -1,0 +1,18 @@
+{
+  "name": "repro-sg-parse-files",
+  "version": "1.0.0",
+  "scripts": {
+    "mock": "tsx src/mock.ts",
+    "parse": "tsx src/parse.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "tsx": "^3.12.2",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@ast-grep/napi": "^0.2.2"
+  }
+}
